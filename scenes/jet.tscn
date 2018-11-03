@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/Character/Character.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/jet/jet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/fire.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -25,5 +26,11 @@ shape = SubResource( 1 )
 [node name="jet_sprite" type="Sprite" parent="." index="1"]
 
 texture = ExtResource( 2 )
+
+[node name="fire" parent="." index="2" instance=ExtResource( 3 )]
+
+show_behind_parent = true
+position = Vector2( 2.20529, 167.601 )
+_sections_unfolded = [ "Visibility" ]
 
 
