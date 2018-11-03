@@ -13,6 +13,12 @@ config_version=3
 config/name="JetTrace"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=600
+window/size/height=1024
+window/handheld/orientation="portrait"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
