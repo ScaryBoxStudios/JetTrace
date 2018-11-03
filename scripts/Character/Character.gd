@@ -5,10 +5,10 @@ var controller
 func _ready():
     pass
 
-func move(var x, var y):
-    self.position = Vector2(x, y)
-    pass
-
-func _process(delta):
-    self.position = controller.position
-    pass
+func _physics_process(delta):
+    var move_target = controller.position
+    var velocity = move_target - self.position
+    var collision_info = $body.move_and_collide(velocity * delta)
+    self.position = move_target
+    if collision_info:
+        pass
