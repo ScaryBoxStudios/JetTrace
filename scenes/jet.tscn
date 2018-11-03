@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/sprites/jet/jet.png" type="Texture" id=1]
 
-[node name="jet" type="Node2D" index="0"]
+[node name="jet" type="Node2D"]
 
 [node name="jet_sprite" type="Sprite" parent="." index="0"]
 
