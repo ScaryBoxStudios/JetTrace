@@ -27,7 +27,8 @@ func random_shape(color):
 
 func random_char():
     item_shape = CHAR
-    item_char = 'a'
+    var c = (randi() % 26) + 'a'.to_ascii()[0]
+    item_char = PoolByteArray([c]).get_string_from_utf8()
 
 func _draw():
     var label = Label.new()
