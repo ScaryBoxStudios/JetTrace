@@ -53,8 +53,11 @@ func spawn_item():
     var screen_rect = get_viewport().get_visible_rect()
     var pos = Vector2(randf() * screen_rect.size.x, $camera.position.y - 400)
     var item = Item.instance()
-    item.position = pos
     add_child(item)
+    item.random_shape(Color(1.0, 0.0, 0.0))
+    #item.random_color()
+    #item.random_char()
+    item.position = pos
     return item
 
 func _process(delta):
