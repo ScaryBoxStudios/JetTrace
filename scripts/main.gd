@@ -3,6 +3,12 @@ extends Node
 export (PackedScene) var Jet
 export (PackedScene) var Item
 
+const PlayerController = preload("res://scripts/Character/PlayerController.gd") # Relative path
+onready var player_controller = PlayerController.new()
+
+const AIController = preload("res://scripts/Character/AIController.gd") # Relative path
+onready var ai_controller = AIController.new()
+
 var item_timer;
 
 func _ready():
@@ -15,6 +21,9 @@ func _ready():
     add_child(item_timer)
     item_timer.connect("timeout", self, "_on_item_spawn_timer")
     item_timer.start()
+
+    player_controller.camera = $camera
+    $jet.controller = player_controller
 
 func _on_item_spawn_timer():
     var item = spawn_item()
@@ -31,9 +40,7 @@ func spawn_item():
 
 func _process(delta):
     $camera.position.y = $camera.position.y - 0.5
-    #jet.position.y = $camera.position.y
-    var mouse_pos = get_viewport().get_mouse_position()
-    $jet.move(mouse_pos.x, (mouse_pos.y - 512) + $camera.position.y)
+    player_controller.move(get_viewport().get_mouse_position())
     if Input.is_action_pressed("ui_cancel"):
         get_tree().quit()
 

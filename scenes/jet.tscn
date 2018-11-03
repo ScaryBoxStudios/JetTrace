@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/jet.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Character/Character.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/jet/jet.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -9,7 +9,7 @@ custom_solver_bias = 0.0
 radius = 59.3225
 height = 195.655
 
-[node name="jet" type="Node2D" index="0"]
+[node name="jet" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]

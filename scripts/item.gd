@@ -14,8 +14,3 @@ func _draw():
 
 func _on_visibility_screen_exited():
     queue_free()
-
-#func _process(delta):
-#    # Called every frame. Delta is time since last frame.
-#    # Update game logic here.
-#    pass
