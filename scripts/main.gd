@@ -12,6 +12,7 @@ onready var ai_controller = AIController.new()
 
 var item_timer;
 var starplosion_emitter;
+var font;
 
 func _ready():
     # Called when the node is added to the scene for the first time.
@@ -30,6 +31,12 @@ func _ready():
 
     starplosion_emitter = Starplosion.instance()
     add_child(starplosion_emitter)
+
+    font = DynamicFont.new()
+    var font_data = DynamicFontData.new()
+    font_data.font_path = "res://assets/font/Roboto-Medium.ttf"
+    font.font_data = font_data
+    font.size = 40
 
 func _on_jet_hit(collision_info):
     starplosion_emitter.hide()
@@ -58,6 +65,7 @@ func spawn_item():
     #item.random_color()
     #item.random_char()
     item.position = pos
+    item.font = font
     return item
 
 func _process(delta):

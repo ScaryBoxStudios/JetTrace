@@ -3,6 +3,7 @@ extends Node2D
 enum ItemShape {CIRCLE, RECT, TRIANGLE, CHAR}
 const item_size = 20.0
 
+var font;
 var item_shape;
 var item_color;
 var item_char;
@@ -31,8 +32,6 @@ func random_char():
     item_char = PoolByteArray([c]).get_string_from_utf8()
 
 func _draw():
-    var label = Label.new()
-    var font = label.get_font("")
     # Your draw commands here
     match item_shape:
         CIRCLE:
@@ -48,7 +47,6 @@ func _draw():
             draw_colored_polygon(pts, item_color)
         CHAR:
             draw_char(font, Vector2(0.0, 0.0), item_char, "", item_color)
-    label.free()
 
 func die():
     $collision.disabled = true
