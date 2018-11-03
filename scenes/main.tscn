@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/img/background.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/sound/starplosion_sound.wav" type="AudioStream" id=6]
 
-[node name="root" type="Node"]
+[node name="root" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Jet = ExtResource( 2 )

@@ -24,8 +24,8 @@ func _ready():
     item_timer.connect("timeout", self, "_on_item_spawn_timer")
     item_timer.start()
 
-    player_controller.camera = $camera
     $jet.controller = player_controller
+    #$jet.controller = ai_controller
     $jet.connect("hit", self, "_on_jet_hit")
 
     starplosion_emitter = Starplosion.instance()
@@ -62,7 +62,8 @@ func spawn_item():
 
 func _process(delta):
     $camera.position.y = $camera.position.y - 0.5
-    player_controller.move(get_viewport().get_mouse_position())
+    player_controller.move(get_viewport().get_mouse_position(), $camera.position)
+    #ai_controller.move($camera.position)
     if Input.is_action_pressed("ui_cancel"):
         get_tree().quit()
 

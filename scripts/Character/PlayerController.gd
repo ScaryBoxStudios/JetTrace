@@ -1,7 +1,4 @@
 extends "res://scripts/Character/CharacterController.gd"
 
-var camera
-
-func move(var p):
-    var new_p = Vector2(p.x, (p.y - 512) + camera.position.y)
-    .move(new_p)
+func move(var pos, var cam_pos):
+    .move(pos, cam_pos)
