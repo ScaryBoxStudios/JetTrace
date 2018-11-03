@@ -5,4 +5,4 @@ func _ready():
 
 func move(var pos, var camera_pos):
     # TODO: Implement AI here
-    .move(Vector2(new_p.x, new_p.y))
+    .move(Vector2(pos.x, pos.y))
