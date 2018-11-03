@@ -24,6 +24,10 @@ func _ready():
 
     player_controller.camera = $camera
     $jet.controller = player_controller
+    $jet.connect("hit", self, "_on_jet_hit")
+
+func _on_jet_hit(collision_info):
+    collision_info.collider.die()
 
 func _on_item_spawn_timer():
     var item = spawn_item()

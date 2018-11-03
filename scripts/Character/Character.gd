@@ -1,4 +1,5 @@
 extends Node2D
+signal hit
 
 var controller
 
@@ -11,4 +12,4 @@ func _physics_process(delta):
     var collision_info = move_and_collide(velocity * delta)
     self.position = move_target # No bounce back for us!
     if collision_info:
-        pass
+        emit_signal("hit", collision_info)

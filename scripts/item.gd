@@ -12,5 +12,10 @@ func _draw():
     # Your draw commands here
     draw_circle(Vector2(0.0, 0.0), size, Color(1.0, 0.0, 0.0))
 
-func _on_visibility_screen_exited():
+func die():
+    $collision.disabled = true
+    hide()
     queue_free()
+
+func _on_visibility_screen_exited():
+    die()
