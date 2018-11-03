@@ -39,8 +39,8 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 
-position = Vector2( 297.235, 503.245 )
-scale = Vector2( 0.555188, 0.532071 )
+position = Vector2( 300.061, 496.811 )
+scale = Vector2( 1.60024, 1.57463 )
 texture = ExtResource( 4 )
 
 [node name="camera" type="Camera2D" parent="." index="2"]
