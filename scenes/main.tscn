@@ -14,11 +14,7 @@ Jet = ExtResource( 2 )
 Item = ExtResource( 3 )
 Starplosion = ExtResource( 4 )
 
-[node name="jet" parent="." index="0" instance=ExtResource( 2 )]
-
-position = Vector2( 300, 512 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
 editor/display_folded = true
 layer = -1
@@ -47,7 +43,7 @@ position = Vector2( 300.061, 496.811 )
 scale = Vector2( 1.60024, 1.57463 )
 texture = ExtResource( 5 )
 
-[node name="camera" type="Camera2D" parent="." index="2"]
+[node name="camera" type="Camera2D" parent="." index="1"]
 
 position = Vector2( 300, 512 )
 anchor_mode = 1
@@ -74,7 +70,7 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="sound_player" type="AudioStreamPlayer2D" parent="." index="3"]
+[node name="sound_player" type="AudioStreamPlayer2D" parent="." index="2"]
 
 stream = ExtResource( 6 )
 volume_db = 10.0

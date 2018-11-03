@@ -19,15 +19,19 @@ func _ready():
     # Initialization here
     var screensize = get_viewport().get_visible_rect().size
 
+    # Add Jet
+    var jet = Jet.instance()
+    add_child(jet)
+
     # Spawn timer
     item_timer = Timer.new()
     add_child(item_timer)
     item_timer.connect("timeout", self, "_on_item_spawn_timer")
     item_timer.start()
 
-    $jet.controller = player_controller
-    #$jet.controller = ai_controller
-    $jet.connect("hit", self, "_on_jet_hit")
+    jet.controller = player_controller
+    #jet.controller = ai_controller
+    jet.connect("hit", self, "_on_jet_hit")
 
     starplosion_emitter = Starplosion.instance()
     add_child(starplosion_emitter)
