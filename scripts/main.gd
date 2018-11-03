@@ -2,6 +2,7 @@ extends Node
 
 export (PackedScene) var Jet
 export (PackedScene) var Item
+export (PackedScene) var Starplosion
 
 const PlayerController = preload("res://scripts/Character/PlayerController.gd") # Relative path
 onready var player_controller = PlayerController.new()
@@ -10,6 +11,7 @@ const AIController = preload("res://scripts/Character/AIController.gd") # Relati
 onready var ai_controller = AIController.new()
 
 var item_timer;
+var starplosion_emitter;
 
 func _ready():
     # Called when the node is added to the scene for the first time.
@@ -26,7 +28,18 @@ func _ready():
     $jet.controller = player_controller
     $jet.connect("hit", self, "_on_jet_hit")
 
+    starplosion_emitter = Starplosion.instance()
+    add_child(starplosion_emitter)
+
 func _on_jet_hit(collision_info):
+    starplosion_emitter.hide()
+    starplosion_emitter.queue_free()
+    starplosion_emitter = Starplosion.instance()
+    add_child(starplosion_emitter)
+
+    starplosion_emitter.position = collision_info.position
+    starplosion_emitter.get_node("emitter").emitting = true
+
     collision_info.collider.die()
 
 func _on_item_spawn_timer():
