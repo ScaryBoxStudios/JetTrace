@@ -9,24 +9,21 @@ custom_solver_bias = 0.0
 radius = 59.3225
 height = 195.655
 
-[node name="jet" type="Node2D" index="0"]
-
-script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="jet_sprite" type="Sprite" parent="." index="0"]
-
-texture = ExtResource( 2 )
-
-[node name="body" type="KinematicBody2D" parent="." index="1"]
+[node name="jet" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "collision" ]
 
-[node name="collision" type="CollisionShape2D" parent="body" index="0"]
+[node name="collision" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
+
+[node name="jet_sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
 
 
