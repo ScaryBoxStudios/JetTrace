@@ -40,9 +40,10 @@ func _draw():
             draw_rect(Rect2(0.0, 0.0, item_size * 1.5, item_size * 1.5), item_color)
         TRIANGLE:
             var pts = PoolVector2Array([])
-            pts.append(Vector2(cos(0.0),    sin(0.0)) * item_size)
-            pts.append(Vector2(cos(2*PI/3), sin(2*PI/3)) * item_size)
-            pts.append(Vector2(cos(4*PI/3), sin(4*PI/3)) * item_size)
+            var scale = 2 * item_size
+            pts.append(Vector2(cos(PI/2), sin(0)) * scale)
+            pts.append(Vector2(cos(PI/3), sin(PI/2)) * scale)
+            pts.append(Vector2(cos(2*PI/3), sin(PI/2)) * scale)
             draw_colored_polygon(pts, item_color)
         CHAR:
             draw_char(font, Vector2(0.0, 0.0), item_char, "", item_color)
