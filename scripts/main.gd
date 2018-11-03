@@ -40,6 +40,8 @@ func _on_jet_hit(collision_info):
     starplosion_emitter.position = collision_info.position
     starplosion_emitter.get_node("emitter").emitting = true
 
+    $sound_player.play()
+
     collision_info.collider.die()
 
 func _on_item_spawn_timer():

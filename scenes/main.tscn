@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/jet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/starplosion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/img/background.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/sound/starplosion_sound.wav" type="AudioStream" id=6]
 
-[node name="root" type="Node"]
+[node name="root" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Jet = ExtResource( 2 )
@@ -72,5 +73,16 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Transform" ]
+
+[node name="sound_player" type="AudioStreamPlayer2D" parent="." index="3"]
+
+stream = ExtResource( 6 )
+volume_db = 10.0
+pitch_scale = 2.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 
