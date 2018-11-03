@@ -9,7 +9,11 @@
 script = ExtResource( 1 )
 Jet = ExtResource( 2 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
+[node name="jet" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 300, 512 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
 
 layer = -1
 offset = Vector2( 0, 0 )
@@ -21,23 +25,47 @@ scroll_base_offset = Vector2( 0, 0 )
 scroll_base_scale = Vector2( 1, 1 )
 scroll_limit_begin = Vector2( 0, 0 )
 scroll_limit_end = Vector2( 0, 0 )
-scroll_ignore_camera_zoom = false
+scroll_ignore_camera_zoom = true
+_sections_unfolded = [ "Scroll" ]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 
 motion_scale = Vector2( 1, 1 )
 motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 1024 )
 _sections_unfolded = [ "Motion" ]
 
-[node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 
-position = Vector2( 2.51678, 0.362709 )
-scale = Vector2( 0.791604, 0.573405 )
+position = Vector2( 297.235, 503.245 )
+scale = Vector2( 0.555188, 0.532071 )
 texture = ExtResource( 3 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 1200, 2048 )
-_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="camera" type="Camera2D" parent="." index="2"]
+
+position = Vector2( 300, 512 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
 
 
