@@ -1,7 +1,7 @@
 extends Node2D
 
 enum ItemShape {CIRCLE, RECT, TRIANGLE, CHAR}
-const item_size = 20.0
+var item_size;
 
 var font;
 var item_shape;
@@ -11,11 +11,12 @@ var item_char;
 func _ready():
     # Called when the node is added to the scene for the first time.
     # Initialization here
-    $collision.shape.radius = item_size
     $visibility.connect("screen_exited", self, "_on_visibility_screen_exited")
+    item_size = 20.0
     item_shape = CIRCLE
     item_color = Color(1.0, 0.0, 0.0)
     item_char = 'a'
+    $collision.shape.radius = item_size
 
 func random_color():
     item_shape = CIRCLE

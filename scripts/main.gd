@@ -39,6 +39,7 @@ func _ready():
     # Target
     target = spawn_item(screensize / 2.0)
     target.gravity_scale = 0.0
+    target.item_size = 60.0
     target_shape = target.item_shape
     target_color = target.item_color
     target_char = target.item_char
