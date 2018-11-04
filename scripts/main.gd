@@ -35,7 +35,6 @@ func _ready():
     # Target
     target = spawn_item(screensize / 2.0)
     target.gravity_scale = 0.0
-    add_child(target)
 
     # Show target for some secs and then start game
     start_timer = Timer.new()
