@@ -119,7 +119,7 @@ func spawn_item(pos):
 
 func _process(delta):
     if game_started:
-        $camera.position.y = $camera.position.y - 0.5
+        $camera.position.y = $camera.position.y - 0.7
 
     player_controller.move(get_viewport().get_mouse_position(), $camera.position)
     #ai_controller.move($camera.position)

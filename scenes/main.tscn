@@ -16,7 +16,6 @@ Starplosion = ExtResource( 4 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -34,18 +33,19 @@ _sections_unfolded = [ "Scroll" ]
 
 motion_scale = Vector2( 1, 1 )
 motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 0, 1024 )
+motion_mirroring = Vector2( 0, 800 )
 _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 
-position = Vector2( 300.061, 496.811 )
-scale = Vector2( 1.60024, 1.57463 )
+position = Vector2( 240.71, 402.306 )
+scale = Vector2( 1.28065, 1.20183 )
 texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="Camera2D" parent="." index="1"]
 
-position = Vector2( 300, 512 )
+position = Vector2( 240, 400 )
 anchor_mode = 1
 rotating = false
 current = true
