@@ -72,6 +72,7 @@ func start_game():
     starplosion_emitter = Starplosion.instance()
     add_child(starplosion_emitter)
 
+    $bgm.play()
     game_started = true
 
 func similar_to_target(item):
