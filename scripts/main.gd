@@ -51,6 +51,7 @@ func _ready():
     start_timer.connect("timeout", self, "_on_start_game")
     start_timer.start()
     game_started = false
+    $back_arrow.visible = false
 
 func _on_start_game():
     print("Starting game!")
@@ -126,10 +127,15 @@ func spawn_item(pos):
     return item
 
 func _process(delta):
+    var screen_rect = get_viewport().get_visible_rect()
+
     if game_started:
         $camera.position.y = $camera.position.y - 0.7
 
-    var screen_rect = get_viewport().get_visible_rect()
+        var pos = Vector2(screen_rect.size.x - 80, $camera.position.y - screen_rect.size.y/2 + 100)
+        $back_arrow.visible = true
+        $back_arrow.rect_position = pos
+
     # hardcoded offsets ftw
     var pos = Vector2(10.0, $camera.position.y - screen_rect.size.y/2 + 120)
     $score_lbl.rect_position = pos
@@ -139,7 +145,8 @@ func _process(delta):
     if Input.is_action_pressed("ui_cancel"):
         get_tree().quit()
 
-func _input(event):
-    # Mouse in viewport coordinates
-    #if event is InputEventMouseMotion:
-        #jet.move(event.position.x, (event.position.y - 512) + $camera.position.y)
+    if Input.is_action_pressed("ui_back"):
+        _on_back_arrow_pressed()
+
+func _on_back_arrow_pressed():
+    get_tree().change_scene("res://scenes/main_menu.tscn")

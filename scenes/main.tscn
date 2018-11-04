@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/jet.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/img/background.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/sound/starplosion_sound.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/sound/bgm.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/img/arrow.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFontData" id=1]
 
@@ -21,7 +22,7 @@ use_filter = false
 font_data = SubResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="root" type="Node"]
+[node name="root" type="Node" index="0"]
 
 script = ExtResource( 1 )
 Jet = ExtResource( 2 )
@@ -30,7 +31,6 @@ Starplosion = ExtResource( 4 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -87,6 +87,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="sound_player" type="AudioStreamPlayer2D" parent="." index="2"]
 
+visible = false
 stream = ExtResource( 6 )
 volume_db = 10.0
 pitch_scale = 2.0
@@ -107,6 +108,7 @@ bus = "Master"
 
 [node name="score_lbl" type="Label" parent="." index="4"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -128,5 +130,31 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="back_arrow" type="TextureButton" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 418.0
+margin_top = 12.0
+margin_right = 466.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 8 )
+_sections_unfolded = [ "Material", "Textures" ]
+
+[connection signal="pressed" from="back_arrow" to="." method="_on_back_arrow_pressed"]
 
 
