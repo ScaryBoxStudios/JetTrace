@@ -10,15 +10,50 @@ onready var player_controller = PlayerController.new()
 const AIController = preload("res://scripts/Character/AIController.gd") # Relative path
 onready var ai_controller = AIController.new()
 
+const mode = 0;
+var start_timer;
 var item_timer;
 var starplosion_emitter;
 var font;
+var target;
+var target_shape;
+var target_color;
+var target_char;
 
 func _ready():
     # Called when the node is added to the scene for the first time.
     # Initialization here
     var screensize = get_viewport().get_visible_rect().size
 
+    # Load font for font items
+    font = DynamicFont.new()
+    var font_data = DynamicFontData.new()
+    font_data.font_path = "res://assets/font/Roboto-Medium.ttf"
+    font.font_data = font_data
+    font.size = 40
+
+    # Target
+    target = spawn_item(screensize / 2.0)
+    target.gravity_scale = 0.0
+    add_child(target)
+
+    # Show target for some secs and then start game
+    start_timer = Timer.new()
+    start_timer.one_shot = true
+    start_timer.wait_time = 5.0
+    add_child(start_timer)
+    start_timer.connect("timeout", self, "_on_start_game")
+    start_timer.start()
+
+func _on_start_game():
+    print("Starting game!")
+    target_shape = target.item_shape
+    target_color = target.item_color
+    target_char = target.item_char
+    target.die()
+    start_game()
+
+func start_game():
     # Add Jet
     var jet = Jet.instance()
     add_child(jet)
@@ -36,38 +71,45 @@ func _ready():
     starplosion_emitter = Starplosion.instance()
     add_child(starplosion_emitter)
 
-    font = DynamicFont.new()
-    var font_data = DynamicFontData.new()
-    font_data.font_path = "res://assets/font/Roboto-Medium.ttf"
-    font.font_data = font_data
-    font.size = 40
+func similar_to_target(item):
+    match mode:
+        0:
+            return item.item_color == target_color
+        1:
+            return item.item_shape == target_shape
+        2:
+            return item.item_char == target_char
+    return false
 
 func _on_jet_hit(collision_info):
-    starplosion_emitter.hide()
-    starplosion_emitter.queue_free()
-    starplosion_emitter = Starplosion.instance()
-    add_child(starplosion_emitter)
+    if similar_to_target(collision_info.collider):
+        starplosion_emitter.hide()
+        starplosion_emitter.queue_free()
+        starplosion_emitter = Starplosion.instance()
+        add_child(starplosion_emitter)
 
-    starplosion_emitter.position = collision_info.position
-    starplosion_emitter.get_node("emitter").emitting = true
+        starplosion_emitter.position = collision_info.position
+        starplosion_emitter.get_node("emitter").emitting = true
 
-    $sound_player.play()
+        $sound_player.play()
 
     collision_info.collider.die()
 
 func _on_item_spawn_timer():
-    var item = spawn_item()
-    item_timer.start()
-
-func spawn_item():
-    # Pick random spawn position from top of the screen
     var screen_rect = get_viewport().get_visible_rect()
     var pos = Vector2(randf() * screen_rect.size.x, $camera.position.y - 400)
+    var item = spawn_item(pos)
+
+func spawn_item(pos):
+    # Pick random spawn position from top of the screen
     var item = Item.instance()
     add_child(item)
-    item.random_shape(Color(1.0, 0.0, 0.0))
-    #item.random_color()
-    #item.random_char()
+    if mode == 0:
+        item.random_color()
+    elif mode == 1:
+        item.random_shape(Color(1.0, 0.0, 0.0))
+    elif mode == 2:
+        item.random_char()
     item.position = pos
     item.font = font
     return item
