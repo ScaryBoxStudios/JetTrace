@@ -93,7 +93,7 @@ func _on_jet_hit(collision_info):
 
         $sound_player.play()
 
-    collision_info.collider.die()
+        collision_info.collider.die()
 
 func _on_item_spawn_timer():
     var screen_rect = get_viewport().get_visible_rect()
