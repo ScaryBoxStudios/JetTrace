@@ -19,7 +19,10 @@ func _ready():
 
 func random_color():
     item_shape = CIRCLE
-    item_color = Color(randf(), randf(), randf())
+    var rcolors = [Color(1.0, 0.0, 0.0),
+                   Color(0.0, 1.0, 0.0),
+                   Color(0.0, 0.0, 1.0)]
+    item_color = rcolors[randi() % len(rcolors)]
 
 func random_shape(color):
     var rshapes = [CIRCLE, RECT, TRIANGLE]
