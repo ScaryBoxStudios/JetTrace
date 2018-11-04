@@ -20,6 +20,7 @@ var target;
 var target_shape;
 var target_color;
 var target_char;
+var score = 0;
 
 func _ready():
     # Called when the node is added to the scene for the first time.
@@ -103,9 +104,12 @@ func _on_jet_hit(collision_info):
 
         collision_info.collider.die()
 
+        score += 1
+        $score_lbl.text = str(score)
+
 func _on_item_spawn_timer():
     var screen_rect = get_viewport().get_visible_rect()
-    var pos = Vector2(randf() * screen_rect.size.x, $camera.position.y - 400)
+    var pos = Vector2(randf() * screen_rect.size.x, $camera.position.y - screen_rect.size.y/2)
     var item = spawn_item(pos)
 
 func spawn_item(pos):
@@ -125,6 +129,11 @@ func spawn_item(pos):
 func _process(delta):
     if game_started:
         $camera.position.y = $camera.position.y - 0.7
+
+    var screen_rect = get_viewport().get_visible_rect()
+    # hardcoded offsets ftw
+    var pos = Vector2(10.0, $camera.position.y - screen_rect.size.y/2 + 120)
+    $score_lbl.rect_position = pos
 
     player_controller.move(get_viewport().get_mouse_position(), $camera.position)
     #ai_controller.move($camera.position)
