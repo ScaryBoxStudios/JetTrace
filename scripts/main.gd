@@ -10,7 +10,6 @@ onready var player_controller = PlayerController.new()
 const AIController = preload("res://scripts/Character/AIController.gd") # Relative path
 onready var ai_controller = AIController.new()
 
-const mode = 0;
 var start_timer;
 var game_started;
 var item_timer;
@@ -81,7 +80,7 @@ func start_game():
     game_started = true
 
 func similar_to_target(item):
-    match mode:
+    match global.mode:
         0:
             return item.item_color == target_color
         1:
@@ -116,11 +115,11 @@ func spawn_item(pos):
     # Pick random spawn position from top of the screen
     var item = Item.instance()
     add_child(item)
-    if mode == 0:
+    if global.mode == 0:
         item.random_color()
-    elif mode == 1:
+    elif global.mode == 1:
         item.random_shape(Color(1.0, 0.0, 0.0))
-    elif mode == 2:
+    elif global.mode == 2:
         item.random_char()
     item.position = pos
     item.font = font

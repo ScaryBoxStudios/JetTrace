@@ -16,7 +16,7 @@ flags = 4
 gradient = SubResource( 1 )
 width = 2048
 
-[node name="main_menu" type="Node2D"]
+[node name="main_menu" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -35,10 +35,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 164.0
-margin_top = 72.0
-margin_right = 314.0
-margin_bottom = 222.0
+margin_left = 167.0
+margin_top = 338.0
+margin_right = 317.0
+margin_bottom = 488.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -61,9 +61,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 88.0
-margin_top = 222.0
+margin_top = 3.0
 margin_right = 388.0
-margin_bottom = 522.0
+margin_bottom = 303.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -85,9 +85,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 468.0
+margin_top = 485.0
 margin_right = 394.0
-margin_bottom = 768.0
+margin_bottom = 785.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2

@@ -14,14 +14,16 @@ func _ready():
 #    # Update game logic here.
 #    pass
 
-func _on_rectangle_btn_pressed():
+func _on_triangle__btn_pressed():
+    global.mode = 0
     get_tree().change_scene("res://scenes/main.tscn")
 
-
-func _on_triangle__btn_pressed():
+func _on_rectangle_btn_pressed():
+    global.mode = 1
     get_tree().change_scene("res://scenes/main.tscn")
 
 
 func _on_char_btn_pressed():
+    global.mode = 2
     get_tree().change_scene("res://scenes/main.tscn")
 
