@@ -26,6 +26,9 @@ func _ready():
     # Initialization here
     var screensize = get_viewport().get_visible_rect().size
 
+    # Initialize random generators
+    randomize()
+
     # Load font for font items
     font = DynamicFont.new()
     var font_data = DynamicFontData.new()
