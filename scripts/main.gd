@@ -12,6 +12,7 @@ onready var ai_controller = AIController.new()
 
 const mode = 0;
 var start_timer;
+var game_started;
 var item_timer;
 var starplosion_emitter;
 var font;
@@ -35,21 +36,22 @@ func _ready():
     # Target
     target = spawn_item(screensize / 2.0)
     target.gravity_scale = 0.0
-
-    # Show target for some secs and then start game
-    start_timer = Timer.new()
-    start_timer.one_shot = true
-    start_timer.wait_time = 5.0
-    add_child(start_timer)
-    start_timer.connect("timeout", self, "_on_start_game")
-    start_timer.start()
-
-func _on_start_game():
-    print("Starting game!")
     target_shape = target.item_shape
     target_color = target.item_color
     target_char = target.item_char
+
+    # Show target for some secs and then start game
+    start_timer = Timer.new()
+    start_timer.wait_time = 3.0
+    add_child(start_timer)
+    start_timer.connect("timeout", self, "_on_start_game")
+    start_timer.start()
+    game_started = false
+
+func _on_start_game():
+    print("Starting game!")
     target.die()
+    start_timer.stop()
     start_game()
 
 func start_game():
@@ -69,6 +71,8 @@ func start_game():
 
     starplosion_emitter = Starplosion.instance()
     add_child(starplosion_emitter)
+
+    game_started = true
 
 func similar_to_target(item):
     match mode:
@@ -114,7 +118,9 @@ func spawn_item(pos):
     return item
 
 func _process(delta):
-    $camera.position.y = $camera.position.y - 0.5
+    if game_started:
+        $camera.position.y = $camera.position.y - 0.5
+
     player_controller.move(get_viewport().get_mouse_position(), $camera.position)
     #ai_controller.move($camera.position)
     if Input.is_action_pressed("ui_cancel"):
